@@ -31,7 +31,7 @@ m_LocalPackages:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638464329290000000
+      ticks: 638470367700000000
     m_Hash: 3528508137
 m_ProjectPath: /Users/PrakharGupta/S4-Minor-2/S-4 Minor-2/Packages
 m_EditorVersion: 2021.3.36f1 (7a0645017be0)
@@ -1364,6 +1364,7 @@ m_ResolvedPackages:
     - 6.0.0-pre.5
     - 6.0.0-pre.6
     - 6.0.0-pre.7
+    - 6.0.0-pre.8
     compatible:
     - 4.2.10
     - 5.0.0-pre.5
@@ -3650,6 +3651,7 @@ m_ResolvedPackages:
     - 6.0.0-pre.5
     - 6.0.0-pre.6
     - 6.0.0-pre.7
+    - 6.0.0-pre.8
     compatible:
     - 4.2.10
     - 5.0.0-pre.5
