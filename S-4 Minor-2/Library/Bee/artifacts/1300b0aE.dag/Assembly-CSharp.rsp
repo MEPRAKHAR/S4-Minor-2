@@ -394,6 +394,7 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/VuforiaEditorScripts.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/VuforiaScripts.ref.dll"
 "Assets/Keyfeedback.cs"
+"Assets/Scripts/ButtonClickHandler.cs"
 "Assets/Scripts/DatabaseAccess.cs"
 "Assets/Scripts/displayDatabase.cs"
 "Assets/Scripts/KeyDetector.cs"

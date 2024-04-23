@@ -393,17 +393,11 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/VuforiaEditorScripts.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/VuforiaScripts.ref.dll"
-"Assets/Scripts/ChairOpenUp.cs"
+"Assets/Keyfeedback.cs"
 "Assets/Scripts/DatabaseAccess.cs"
 "Assets/Scripts/displayDatabase.cs"
-"Assets/Scripts/FanOpenUp.cs"
-"Assets/Scripts/KiwiOpenUp.cs"
-"Assets/Scripts/PineappleOpenUp.cs"
-"Assets/Scripts/RaspberriesOpenUp.cs"
-"Assets/Scripts/ShelfOpenUp.cs"
-"Assets/Scripts/SwitchOpenUp.cs"
-"Assets/Scripts/TableOpenUp.cs"
-"Assets/Scripts/TubelightOpenUp.cs"
+"Assets/Scripts/KeyDetector.cs"
+"Assets/Scripts/OpenUp.cs"
 -langversion:9.0
 
 /deterministic

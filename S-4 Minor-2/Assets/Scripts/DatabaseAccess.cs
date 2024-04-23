@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using UnityEngine;
+using System.Linq;
 
 public class DatabaseAccess : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class DatabaseAccess : MonoBehaviour
 
 
 
-    public async Task<List<Available>> GetDataFromDataBase()
+    /*public async Task<List<Available>> GetDataFromDataBase()
     {
         var allItemsTask = collection.FindAsync(new BsonDocument());
         var itemsAwaited = await allItemsTask;
@@ -45,22 +46,44 @@ public class DatabaseAccess : MonoBehaviour
         }
 
         return availables;
-    }
+    }*/
 
-    private Available Deserialize(string rawJson)
+    public async Task<List<Available>> GetDataFromDataBase(string keyName)
+{
+    var filter = Builders<BsonDocument>.Filter.Exists(keyName);
+
+    var cursor = await collection.FindAsync(filter);
+
+    List<Available> availables = new List<Available>();
+    await cursor.ForEachAsync(document =>
     {
-        var availables = new Available();
-        var stringWithoutID = rawJson.Substring(rawJson.IndexOf("),") + 4);
-        var itemname = stringWithoutID.Substring(0, stringWithoutID.IndexOf(":") - 2);
-        var available = stringWithoutID.Substring(stringWithoutID.IndexOf(":") + 2, stringWithoutID.IndexOf("}") - stringWithoutID.IndexOf(":") - 3);
-        availables.itemName = itemname;
-        availables.quantity = Convert.ToInt32(available);
+        if (document.Contains(keyName)) // Check if the key exists in the document
+        {
+            // Safely retrieve the values from the document
+            var itemName = keyName;
+            var quantity = document[keyName].ToInt32();
+
+            Available available = new Available
+            {
+                itemName = itemName,
+                quantity = quantity
+            };
+            availables.Add(available);
+        }
+    });
+
+        string output = string.Join("\n", availables.Select(item => $"Item Name: {item.itemName}\nQuantity: {item.quantity}"));
+        Debug.Log(output);
 
         return availables;
-    }
+}
+
+        
+    
 
     
 }
+
 
 
 //inline class

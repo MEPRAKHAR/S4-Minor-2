@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets/Keyfeedback.cs" />
     <Compile Include="Assets/Scripts/KeyDetector.cs" />
+    <Compile Include="Assets/Scripts/ButtonClickHandler.cs" />
     <Compile Include="Assets/Scripts/OpenUp.cs" />
     <Compile Include="Assets/Scripts/DatabaseAccess.cs" />
     <Compile Include="Assets/Scripts/displayDatabase.cs" />
