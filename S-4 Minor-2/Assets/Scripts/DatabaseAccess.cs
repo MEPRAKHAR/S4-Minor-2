@@ -1,4 +1,6 @@
 using System;
+using UnityEngine.UI;
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -34,20 +36,6 @@ public class DatabaseAccess : MonoBehaviour
 
 
 
-    /*public async Task<List<Available>> GetDataFromDataBase()
-    {
-        var allItemsTask = collection.FindAsync(new BsonDocument());
-        var itemsAwaited = await allItemsTask;
-
-        List<Available> availables = new List<Available>();
-        foreach (var item in itemsAwaited.ToList())
-        {
-            availables.Add(Deserialize(item.ToString()));
-        }
-
-        return availables;
-    }*/
-
     public async Task<List<Available>> GetDataFromDataBase(string keyName)
 {
     var filter = Builders<BsonDocument>.Filter.Exists(keyName);
@@ -72,16 +60,29 @@ public class DatabaseAccess : MonoBehaviour
         }
     });
 
-        string output = string.Join("\n", availables.Select(item => $"Item Name: {item.itemName}\nQuantity: {item.quantity}"));
+        string output = string.Join("\n", availables.Select(item => $"Item Name: {item.itemName} \n Quantity: {item.quantity}"));
         Debug.Log(output);
 
         return availables;
-}
+    }
 
-        
-    
 
-    
+    public async Task UpdateQuantityInDataBase(string itemName, int newQuantity)
+    {
+        try
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("itemName", itemName);
+            var update = Builders<BsonDocument>.Update.Set("quantity", newQuantity);
+
+            var result = await collection.UpdateOneAsync(filter, update);
+
+            Debug.Log($"Update result: {result.ModifiedCount} document(s) modified");
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Error updating quantity: {ex.Message}");
+        }
+    }
 }
 
 
