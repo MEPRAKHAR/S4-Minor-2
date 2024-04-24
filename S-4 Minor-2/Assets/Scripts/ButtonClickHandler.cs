@@ -24,6 +24,7 @@ public class ButtonClickHandler : MonoBehaviour
         // Add listeners for the increase and decrease buttons
         increaseButton.onClick.AddListener(IncreaseQuantity);
         decreaseButton.onClick.AddListener(DecreaseQuantity);
+        
     }
 
     async void HandleButtonClick()

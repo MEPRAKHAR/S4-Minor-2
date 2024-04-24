@@ -69,19 +69,17 @@ public class DatabaseAccess : MonoBehaviour
 
     public async Task UpdateQuantityInDataBase(string itemName, int newQuantity)
     {
-        try
-        {
-            var filter = Builders<BsonDocument>.Filter.Eq("itemName", itemName);
-            var update = Builders<BsonDocument>.Update.Set("quantity", newQuantity);
+        // Create a filter to match documents where the item name field exists
+        var filter = Builders<BsonDocument>.Filter.Exists(itemName);
 
-            var result = await collection.UpdateOneAsync(filter, update);
+        // Create an update document that sets the item name field to the new quantity
+        var update = Builders<BsonDocument>.Update.Set(itemName, newQuantity);
 
-            Debug.Log($"Update result: {result.ModifiedCount} document(s) modified");
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($"Error updating quantity: {ex.Message}");
-        }
+        // Log the filter and update operations for debugging
+        Debug.Log($"Filter: {filter.ToString()}, Update: {update.ToString()}");
+
+        // Update all documents that match the filter
+        await collection.UpdateManyAsync(filter, update);
     }
 }
 
