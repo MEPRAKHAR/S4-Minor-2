@@ -19,10 +19,8 @@ public class DatabaseAccess : MonoBehaviour
         database = client.GetDatabase("InventoryManagementSystem");
         collection = database.GetCollection<BsonDocument>("InventoryManagementSystemCollection");
 
-
-
     }
-
+/*
     public async void SaveDataToDataBase(string itemName, int quantity)
     {
         var document = new BsonDocument { { itemName, quantity } };
@@ -35,7 +33,7 @@ public class DatabaseAccess : MonoBehaviour
     }
 
 
-
+*/
     public async Task<List<Available>> GetDataFromDataBase(string keyName)
 {
     var filter = Builders<BsonDocument>.Filter.Exists(keyName);
@@ -47,7 +45,7 @@ public class DatabaseAccess : MonoBehaviour
     {
         if (document.Contains(keyName)) // Check if the key exists in the document
         {
-            // Safely retrieve the values from the document
+        
             var itemName = keyName;
             var quantity = document[keyName].ToInt32();
 
@@ -69,24 +67,18 @@ public class DatabaseAccess : MonoBehaviour
 
     public async Task UpdateQuantityInDataBase(string itemName, int newQuantity)
     {
-        // Create a filter to match documents where the item name field exists
         var filter = Builders<BsonDocument>.Filter.Exists(itemName);
 
-        // Create an update document that sets the item name field to the new quantity
         var update = Builders<BsonDocument>.Update.Set(itemName, newQuantity);
 
-        // Log the filter and update operations for debugging
         Debug.Log($"Filter: {filter.ToString()}, Update: {update.ToString()}");
 
-        // Update all documents that match the filter
         await collection.UpdateManyAsync(filter, update);
     }
 }
 
-
-
 //inline class
-public class Available
+public class Available  
 {
     public string itemName { get; set; }
     public int quantity { get; set; }

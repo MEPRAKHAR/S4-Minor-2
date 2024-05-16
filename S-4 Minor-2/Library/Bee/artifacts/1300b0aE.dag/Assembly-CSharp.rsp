@@ -396,7 +396,6 @@
 "Assets/Keyfeedback.cs"
 "Assets/Scripts/ButtonClickHandler.cs"
 "Assets/Scripts/DatabaseAccess.cs"
-"Assets/Scripts/KeyDetector.cs"
 -langversion:9.0
 
 /deterministic

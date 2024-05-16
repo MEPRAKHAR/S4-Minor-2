@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="Grocery" size="5.000000 4.959128" />
+    <ImageTarget name="Furniture" size="5.000000 5.111732" />
+    <ImageTarget name="Electronics" size="5.000000 4.905914" />
+  </Tracking>
+</QCARConfig>
